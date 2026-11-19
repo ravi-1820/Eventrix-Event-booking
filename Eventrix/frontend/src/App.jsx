@@ -22,6 +22,7 @@ import { PaymentMethodPage } from './components/bookings/PaymentMethodPage';
 import { AboutPage } from './components/pages/AboutPage';
 import { ContactPage } from './components/pages/ContactPage';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
+import { IntroLoadingOverlay } from './components/common/IntroLoadingOverlay';
 import { api } from './api/client';
 
 export default function App() {
@@ -265,6 +266,7 @@ export default function App() {
     return (
       <ErrorBoundary>
         <div className="min-h-screen bg-[#F0F9FF] text-[#0F172A] font-sans antialiased">
+          <IntroLoadingOverlay />
           {toastMessage && (
             <div className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-[#0F172A] text-white text-xs shadow-2xl flex items-center gap-3 border border-slate-700 animate-in slide-in-from-bottom-4">
               <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -285,6 +287,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#E0F2FE] text-[#0F172A] font-sans antialiased selection:bg-[#FF4F70] selection:text-white">
+      {/* Premium 5-Second Intro Loading Animation Overlay */}
+      <IntroLoadingOverlay />
       
       {/* Toast Notification */}
       {toastMessage && (

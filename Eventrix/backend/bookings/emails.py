@@ -15,10 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def generate_ticket_qr_png(booking):
-    """
-    Generates a high-contrast QR code PNG in-memory for the booking verification URL.
-    Returns bytes of the PNG image.
-    """
+
     frontend_base = getattr(settings, 'FRONTEND_URL', 'http://localhost:5173').rstrip('/')
     booking_id = getattr(booking, 'booking_id', 'ETX-CONFIRMED')
     event_title = getattr(booking.event, 'title', '')
@@ -43,7 +40,6 @@ def generate_ticket_qr_png(booking):
 
 
 def _draw_pill(c, text, x, y, bg_color="#E0F2FE", border_color="#BAE6FD", text_color="#075985", font_size=7, h=16, px=8):
-    """Helper to draw a styled rounded pill tag."""
     c.setFont("Helvetica-Bold", font_size)
     text_w = c.stringWidth(text, "Helvetica-Bold", font_size)
     pill_w = text_w + (px * 2)
@@ -59,10 +55,7 @@ def _draw_pill(c, text, x, y, bg_color="#E0F2FE", border_color="#BAE6FD", text_c
 
 
 def generate_ticket_pdf(booking):
-    """
-    Generates a high-resolution, print-ready PDF ticket that exactly matches the
-    frontend VerifiedEventTicket reference in the user's screenshot.
-    """
+    
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter)
     width, height = letter # 612 x 792 pt
@@ -631,9 +624,7 @@ def get_ticket_email_clean_html(booking):
 
 
 def _send_ticket_email_task(subject, text_content, html_content, recipient_email, from_email, pdf_bytes, booking_id):
-    """
-    Background worker executed via thread to send ticket email with attached PDF.
-    """
+    
     try:
         msg = EmailMultiAlternatives(
             subject=subject,
@@ -655,10 +646,7 @@ def _send_ticket_email_task(subject, text_content, html_content, recipient_email
 
 
 def send_booking_ticket_email(booking, async_send=True):
-    """
-    Prepares and delivers the clean confirmation message with the matching
-    PDF ticket attachment to booking.user.email.
-    """
+    
     user = getattr(booking, 'user', None)
     if not user or not getattr(user, 'email', None):
         logger.warning(f"Booking {getattr(booking, 'booking_id', 'UNKNOWN')} has no valid user email. Skipping ticket email.")

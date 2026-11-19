@@ -6,9 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 logger = logging.getLogger(__name__)
 
 def get_welcome_email_html(user, login_url, role='Participant'):
-    """
-    Generate a simple, clean, and highly professional HTML account confirmation email.
-    """
+  
     display_name = user.get_full_name() or user.first_name or user.username
     username = user.username
     email = user.email
@@ -129,7 +127,7 @@ def get_welcome_email_html(user, login_url, role='Participant'):
 
 
 def _send_mail_task(subject, text_content, html_content, recipient_email, from_email):
-    """Worker function executed in background thread."""
+  
     try:
         msg = EmailMultiAlternatives(
             subject=subject,
@@ -145,9 +143,7 @@ def _send_mail_task(subject, text_content, html_content, recipient_email, from_e
 
 
 def send_welcome_email(user, role='Participant', login_url=None, async_send=True):
-    """
-    Send a clean, simple, and professional account confirmation email to the user.
-    """
+  
     if not user.email:
         logger.warning(f"User {user.username} has no email address. Skipping confirmation email.")
         return False
@@ -194,9 +190,7 @@ def send_welcome_email(user, role='Participant', login_url=None, async_send=True
 
 
 def get_password_reset_otp_html(user, otp):
-    """
-    Generate clean, simple, and professional HTML email containing the 6-digit OTP.
-    """
+  
     display_name = user.get_full_name() or user.first_name or user.username
     support_email = getattr(settings, 'EMAIL_HOST_USER', 'ravitech090@gmail.com')
 
@@ -297,9 +291,7 @@ def get_password_reset_otp_html(user, otp):
 
 
 def send_password_reset_otp_email(user, otp, async_send=True):
-    """
-    Send OTP email for password reset.
-    """
+  
     if not user.email:
         logger.warning(f"User {user.username} has no email address. Skipping password reset OTP.")
         return False
