@@ -1,0 +1,129 @@
+# ==============================================================================
+# Eventrix Hub - Git Ignore Configuration
+# ==============================================================================
+
+# --- Python & Django ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+*.sqlite3
+*.sqlite3-journal
+*.db
+db.sqlite3
+**/db.sqlite3
+
+# Django static / media / temporary data
+*.backup_safety
+**/staticfiles/
+**/media/
+staticfiles/
+media/
+*.pot
+*.mo
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+**/venv/
+**/.venv/
+**/env/
+.conda/
+.direnv/
+
+# --- Node & Frontend (React + Vite) ---
+node_modules/
+**/node_modules/
+dist/
+dist-ssr/
+**/dist/
+**/dist-ssr/
+build/
+**/build/
+.npm/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.vite/
+**/.vite/
+.cache/
+**/.cache/
+.turbo/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# --- Environment & Secret Variables ---
+.env
+.env.*
+.env.local
+.env.*.local
+*.local
+**/.env
+**/.env.*
+**/.env.local
+**/.env.*.local
+!.env.example
+!**/.env.example
+!.env.*.example
+!**/.env.*.example
+**/Email_App_Password*
+Email_App_Password*
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+secrets.json
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Testing & Coverage ---
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+coverage/
+.hypothesis/
+
+# --- IDEs & Code Editors ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*.sw?
+*~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sublime-project
+*.sublime-workspace
+
+# --- OS Specific Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
